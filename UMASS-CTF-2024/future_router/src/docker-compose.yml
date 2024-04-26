@@ -1,0 +1,31 @@
+services:
+  frontend:
+    build: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - planktons_router
+    networks:
+      - internet
+      - internal-network
+  planktons_router:
+    build: app
+    networks:
+      - internal-network
+  patricks_rock:
+    build: patrick
+    networks:
+      - internal-network
+  spongebobs_spatula:
+    build: spongebob
+    networks:
+      - internal-network
+  squidwards_clarinet:
+    build: squidward
+    networks:
+      - internal-network
+networks:
+ internet: {}
+ internal-network:
+    driver: bridge
+    internal: true
